@@ -26,12 +26,12 @@ if [ ! -f "$BOOKSTACK_HOME/.env" ]; then
       DB_PASSWORD=${DB_PASSWORD:-password}
 
       # Cache and session
-      CACHE_DRIVER=file
-      SESSION_DRIVER=file
+      CACHE_DRIVER=${BOOKSTACK_CACHEDRIVER:-file}
+      SESSION_DRIVER=${BOOKSTACK_SESSIONDRIVER:-file}
       # If using Memcached, comment the above and uncomment these
       #CACHE_DRIVER=memcached
       #SESSION_DRIVER=memcached
-      QUEUE_DRIVER=sync
+      QUEUE_DRIVER=${BOOKSTACK_SESSIONDRIVER:-sync}
 
       # Memcached settings
       # If using a UNIX socket path for the host, set the port to 0
