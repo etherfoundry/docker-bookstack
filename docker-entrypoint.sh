@@ -31,7 +31,7 @@ if [ ! -f "$BOOKSTACK_HOME/.env" ]; then
       # If using Memcached, comment the above and uncomment these
       #CACHE_DRIVER=memcached
       #SESSION_DRIVER=memcached
-      QUEUE_DRIVER=${BOOKSTACK_SESSIONDRIVER:-sync}
+      QUEUE_DRIVER=${BOOKSTACK_QUEUEDRIVER:-sync}
 
       # Memcached settings
       # If using a UNIX socket path for the host, set the port to 0
@@ -109,6 +109,7 @@ php artisan key:generate
 
 php artisan migrate --force
 
+ mkdir -p ${BOOKSTACK_HOME}/storage/sessions ${BOOKSTACK_HOME}/storage/cache ${BOOKSTACK_HOME}/storage/views
 
 echo "Setting folder permissions for uploads"
 chown -R www-data:www-data public/uploads && chmod -R 775 public/uploads
